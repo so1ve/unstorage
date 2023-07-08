@@ -1,4 +1,4 @@
-import { defineDriver, createError } from "./utils";
+import { defineDriver, createError } from "./utils/index";
 import type { DenoKv, DenoGlobal } from "./utils/deno-kv";
 import { flattenAsyncIterable } from "./utils/deno-kv";
 
@@ -12,7 +12,7 @@ declare global {
 }
 
 export default defineDriver<DenoKvOptions>(({ path, prefix }) => {
-  const r = (key: string) => [...prefix, key];
+  const r = (key: string) => [...(prefix) ? prefix : [], key];
 
   let _client: DenoKv;
 
