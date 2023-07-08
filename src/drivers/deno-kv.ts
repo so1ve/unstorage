@@ -11,7 +11,7 @@ declare global {
   const Deno: DenoGlobal;
 }
 
-export default defineDriver<DenoKvOptions>(({ path, prefix }) => {
+export default defineDriver<DenoKvOptions>(({ path, prefix }: DenoKvOptions) => {
   const r = (key: string) => [...(prefix) ? prefix : [], key];
 
   let _client: DenoKv;
